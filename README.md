@@ -26,7 +26,7 @@ Follow the steps bellow:
    ```bash
    ./exec.sh start
    ```
-   After installed and started, the application should be accessible at [3000](http://localhost:3000) port.
+   After installed and started, the application should be accessible at [5173](http://localhost:5173) port.
 2. Execute the following command to watch the application logs:
    ```bash
    ./exec.sh logs

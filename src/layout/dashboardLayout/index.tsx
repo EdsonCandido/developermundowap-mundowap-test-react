@@ -29,7 +29,7 @@ import { IconType } from "react-icons";
 import { AiOutlineUser } from "react-icons/ai";
 
 import useAuth from "../../hooks/auth";
-import { GrMoney } from "react-icons/gr";
+// import { GrMoney } from "react-icons/gr";
 
 type NavItemProps = FlexProps & {
   icon: IconType;

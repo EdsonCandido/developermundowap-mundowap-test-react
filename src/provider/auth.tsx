@@ -2,7 +2,7 @@ import { ReactNode, useState } from "react";
 import AuthContext from "../context/auth";
 import { useNavigate } from "react-router";
 import { http } from "../services/http";
-import { CreateNewUser } from "../types/AuthContextData";
+// import { CreateNewUser } from "../types/AuthContextData";
 import { toast } from "react-toastify";
 
 type ContextProviderProps = {
@@ -85,43 +85,6 @@ const AuthProvider = ({ children }: ContextProviderProps) => {
     return request;
   }
 
-  async function listUserAdmin() {
-    const result = await http
-      .get("/users")
-      .then((e) => ({
-        data: e.data,
-        success: true,
-        error: null,
-        message: "OK",
-      }))
-      .catch((e) => ({
-        data: null,
-        success: false,
-        error: e.response?.data,
-        message: e.response?.data || e.message,
-      }));
-
-    return result;
-  }
-  async function listBannersAdmin() {
-    const result = await http
-      .get("/banners")
-      .then((e) => ({
-        data: e.data,
-        success: true,
-        error: null,
-        message: "OK",
-      }))
-      .catch((e) => ({
-        data: null,
-        success: false,
-        error: e.response?.data,
-        message: e.response?.data || e.message,
-      }));
-
-    return result;
-  }
-
   function signOut() {
     // console.log('signOut');
     // localStorage.removeItem('zuko@accessToken');
@@ -131,83 +94,83 @@ const AuthProvider = ({ children }: ContextProviderProps) => {
     navigate("/login", { replace: true });
   }
 
-  async function validLogin(login: string) {
-    const result = await http
-      .get("/users/login/valid", {
-        params: { login: login },
-      })
-      .then((e) => ({
-        data: e.data,
-        success: true,
-        error: null,
-        message: "OK",
-      }))
-      .catch((e) => ({
-        data: null,
-        success: false,
-        error: e.response?.data,
-        message: e.response?.data || e.message,
-      }));
+  // async function validLogin(login: string) {
+  //   const result = await http
+  //     .get("/users/login/valid", {
+  //       params: { login: login },
+  //     })
+  //     .then((e) => ({
+  //       data: e.data,
+  //       success: true,
+  //       error: null,
+  //       message: "OK",
+  //     }))
+  //     .catch((e) => ({
+  //       data: null,
+  //       success: false,
+  //       error: e.response?.data,
+  //       message: e.response?.data || e.message,
+  //     }));
 
-    return result;
-  }
+  //   return result;
+  // }
 
-  async function createNewUser({
-    cpf,
-    is_admin,
-    is_ativo,
-    login,
-    nome,
-    senha,
-    cod,
-    is_primeiro_acesso,
-  }: CreateNewUser) {
-    const payload = {
-      cpf,
-      is_admin,
-      is_ativo,
-      login,
-      nome,
-      senha,
-      cod,
-      is_primeiro_acesso,
-    };
+  // async function createNewUser({
+  //   cpf,
+  //   is_admin,
+  //   is_ativo,
+  //   login,
+  //   nome,
+  //   senha,
+  //   cod,
+  //   is_primeiro_acesso,
+  // }: CreateNewUser) {
+  //   const payload = {
+  //     cpf,
+  //     is_admin,
+  //     is_ativo,
+  //     login,
+  //     nome,
+  //     senha,
+  //     cod,
+  //     is_primeiro_acesso,
+  //   };
 
-    const result = await http
-      .post("/users/", payload)
-      .then((e) => ({
-        data: e.data,
-        success: true,
-        error: null,
-        message: "OK",
-      }))
-      .catch((e) => ({
-        data: null,
-        success: false,
-        error: e.response?.data,
-        message: e.response?.data || e.message,
-      }));
+  //   const result = await http
+  //     .post("/users/", payload)
+  //     .then((e) => ({
+  //       data: e.data,
+  //       success: true,
+  //       error: null,
+  //       message: "OK",
+  //     }))
+  //     .catch((e) => ({
+  //       data: null,
+  //       success: false,
+  //       error: e.response?.data,
+  //       message: e.response?.data || e.message,
+  //     }));
 
-    return result;
-  }
-  async function findUser(userId: number) {
-    const result = await http
-      .get("/users/" + userId)
-      .then((e) => ({
-        data: e.data,
-        success: true,
-        error: null,
-        message: "OK",
-      }))
-      .catch((e) => ({
-        data: null,
-        success: false,
-        error: e.response?.data,
-        message: e.response?.data || e.message,
-      }));
+  //   return result;
+  // }
+  // async function findUser(userId: number) {
+  //   const result = await http
+  //     .get("/users/" + userId)
+  //     .then((e) => ({
+  //       data: e.data,
+  //       success: true,
+  //       error: null,
+  //       message: "OK",
+  //     }))
+  //     .catch((e) => ({
+  //       data: null,
+  //       success: false,
+  //       error: e.response?.data,
+  //       message: e.response?.data || e.message,
+  //     }));
 
-    return result;
-  }
+  //   return result;
+  // }
 
   async function refreshAccessToken() {
     signOut();
@@ -241,14 +204,14 @@ const AuthProvider = ({ children }: ContextProviderProps) => {
   return (
     <AuthContext.Provider
       value={{
-        findUser,
-        createNewUser,
-        validLogin,
+        // findUser,
+        // createNewUser,
+        // validLogin,
         user: data.user,
         signIn,
         signOut,
-        listUserAdmin,
-        listBannersAdmin,
+        // listUserAdmin,
+        // listBannersAdmin,
       }}
     >
       {children}
